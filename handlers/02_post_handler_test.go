@@ -54,7 +54,9 @@ func TestAddNewWinnerHandlerAddsNewWinnerWithValidData(t *testing.T) {
 	var winners data.Winners
 	json.Unmarshal([]byte(allWinners), &winners)
 
-	if len(winners.Winners) != 22 {
+	if len(winners.Winners) != 22 &&
+		winners.Winners[21].Country == "Croatia" &&
+		winners.Winners[21].Year == 2030 {
 		t.Error("Did not properly add new winner to the list")
 	}
 }
